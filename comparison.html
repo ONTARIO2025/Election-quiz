@@ -1,1 +1,55 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Comparison</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; background-color: #f4f4f4; }
+        .container { max-width: 800px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); margin: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        .back-button { margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .back-button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Candidate & Party Comparison</h2>
+
+        <table>
+            <tr>
+                <th>Policy Area</th>
+                <th>Conservative</th>
+                <th>Liberal</th>
+                <th>NDP</th>
+                <th>Green</th>
+            </tr>
+            <tr>
+                <td>Climate Change</td>
+                <td>Market-based solutions</td>
+                <td>Net-zero by 2050</td>
+                <td>Stronger climate action</td>
+                <td>Full renewable transition</td>
+            </tr>
+            <tr>
+                <td>Healthcare</td>
+                <td>Privatization options</td>
+                <td>Increase funding</td>
+                <td>Universal pharmacare</td>
+                <td>Expand services</td>
+            </tr>
+        </table>
+
+        <button class="back-button" onclick="goBack()">Back to Quiz</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
