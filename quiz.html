@@ -132,11 +132,13 @@
 
             let finalResult = "";
             if (userScore <= 3) {
-                finalResult = "Candidate A (Conservative-aligned)";
+                finalResult = "Conservative Party";
             } else if (userScore <= 6) {
-                finalResult = "Candidate B (Centrist-aligned)";
+                finalResult = "Liberal Party";
+            } else if (userScore <= 9) {
+                finalResult = "New Democratic Party (NDP)";
             } else {
-                finalResult = "Candidate C (Progressive-aligned)";
+                finalResult = "Other options (Green Party, Independents, etc.)";
             }
 
             resultText.textContent = "Your result: " + finalResult;
