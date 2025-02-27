@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riding-Specific Strategic Voting</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; background-color: #f4f4f4; }
+        .container { max-width: 700px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); margin: auto; }
+        h2 { color: #007bff; }
+        .section { text-align: left; margin-top: 20px; }
+        .back-button { margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .back-button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Riding-Specific Strategic Voting Guide</h2>
+
+        <div class="section">
+            <h3>Find Your Riding</h3>
+            <p>Enter your postal code below to find strategic voting recommendations for your riding.</p>
+            <input type="text" id="postal-code" placeholder="Enter postal code">
+            <button onclick="getRidingInfo()">Get Riding Info</button>
+        </div>
+
+        <div class="section" id="riding-result" style="display:none;">
+            <h3>Recommended Strategy:</h3>
+            <p id="riding-info-text"></p>
+        </div>
+
+        <button class="back-button" onclick="goBack()">Back to Quiz</button>
+    </div>
+
+    <script>
+        function getRidingInfo() {
+            let postalCode = document.getElementById("postal-code").value;
+            let result = document.getElementById("riding-result");
+            let text = document.getElementById("riding-info-text");
+
+            if (postalCode === "") {
+                alert("Please enter a postal code.");
+                return;
+            }
+
+            text.innerHTML = "Strategic voting recommendations for this riding will be displayed here.";
+            result.style.display = "block";
+        }
+
+        function goBack() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
 
