@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riding-Specific Strategic Voting</title>
+    <title>Riding-Specific Strategic Voting Guide</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; margin: 20px; background-color: #f4f4f4; }
         .container { max-width: 700px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); margin: auto; }
@@ -25,6 +25,8 @@
         </div>
 
         <div class="section" id="riding-result" style="display:none;">
+            <h3>Your Riding:</h3>
+            <p id="riding-name"></p>
             <h3>Recommended Strategy:</h3>
             <p id="riding-info-text"></p>
         </div>
@@ -33,18 +35,34 @@
     </div>
 
     <script>
-        function getRidingInfo() {
-            let postalCode = document.getElementById("postal-code").value;
-            let result = document.getElementById("riding-result");
-            let text = document.getElementById("riding-info-text");
+        async function getRidingInfo() {
+            const postalCode = document.getElementById("postal-code").value.trim().toUpperCase();
+            const resultSection = document.getElementById("riding-result");
+            const ridingNameElement = document.getElementById("riding-name");
+            const infoTextElement = document.getElementById("riding-info-text");
 
-            if (postalCode === "") {
+            if (!postalCode) {
                 alert("Please enter a postal code.");
                 return;
             }
 
-            text.innerHTML = "Strategic voting recommendations for this riding will be displayed here.";
-            result.style.display = "block";
+            try {
+                const response = await fetch(`https://represent.opennorth.ca/postcodes/${postalCode}/`);
+                if (!response.ok) {
+                    throw new Error("Postal code not found.");
+                }
+                const data = await response.json();
+                const ridingName = data.boundaries_concordances["federal-electoral-districts"][0].name;
+                ridingNameElement.textContent = ridingName;
+
+                // Placeholder message until recommendations are added
+                infoTextElement.textContent = `Strategic voting recommendations for ${ridingName} will be displayed here.`;
+
+                resultSection.style.display = "block";
+            } catch (error) {
+                alert("Error fetching riding information. Please ensure the postal code is correct.");
+                console.error(error);
+            }
         }
 
         function goBack() {
@@ -53,4 +71,3 @@
     </script>
 </body>
 </html>
-
